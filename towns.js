@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	$('#btnDelete').click(deleteTown)
+	$('#btnAdd').click(addTown)
 });
 
 function deleteTown() {
@@ -16,4 +17,15 @@ function deleteTown() {
 		$('#result').text(townName + " deleted.");
 	else
 		$('#result').text(townName + " not found.");
+}
+
+function addTown() {
+	let townName = $('#newTownName').val();
+	$('#newTownName').val('');
+	if (townName.trim() === '') {
+		$('#result').text("Please enter a town name.");
+		return;
+	}
+	$('#towns').append($('<option>').text(townName));
+	$('#result').text(townName + " added.");
 }
